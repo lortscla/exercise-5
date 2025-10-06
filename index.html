@@ -14,6 +14,117 @@
         font-size: 20px;
       }
 
+      .header-right {
+        display: flex;
+        position:relative;
+        margin-left:auto;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 20px;
+        z-index: 1000; /*this makes it above other stuff*/
+        }
+
+      .header-center {
+        flex:1;
+        position:absolute;
+        left:50%; /*this moves left edge to middle of parent...50% from the left*/
+        transform: translateX(-50%); /*this shifts it back to the left by 50% of its width (always half of parent) when shrinking*/
+        padding:10px;
+      }
+
+    #primary-nav li {
+      display: block;
+     }
+
+      .inner {
+      overflow: hidden;
+    }
+
+    #toggle-nav-btn {
+     font-size: 50px;   
+     line-height: 1;
+     background: none;
+     border: none;
+     cursor: pointer;
+     display: none;  
+   }
+  
+    .hamburger-nav ul {
+     display: flex;
+     flex-direction: column; /* stack vertically */
+     padding: 0;
+     margin: 0;
+     gap: 0;
+    }
+
+    .hamburger-nav {
+      display: none;
+      position: absolute;
+      top: 100%;  
+      right: 0;
+      width: 200px; 
+      border-radius: 0 0 10px 10px;
+      box-sizing: border-box;
+      padding: 10px 0;
+      z-index: 999;    
+    }
+
+    .hamburger-nav.show {
+      display: block;
+    }
+
+    .hamburger-nav li {
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .hamburger-nav a {
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .hamburger-nav a:hover, 
+    .hamburger-nav a:active {
+      border-radius: 5px;
+    }
+
+      #top-bar { 
+        display: flex;
+        height:100px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      #primary-nav { 
+        display:block;
+        margin: 0px;
+        width: 100%;
+      }
+
+      nav ul {
+        list-style-type: none; 
+        padding: 20px;
+        display: flex;
+        justify-content: center; 
+        gap: 40px
+      }
+
+      nav ul li {
+        margin: 15px; 
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 25px;
+      }
+
+      a:hover {
+        color: blue;   
+        }  
+
       body {
             margin: 0 auto;
         }
@@ -79,6 +190,22 @@
             order: 2;
           }
 
+          #toggle-nav-btn {
+         display: block;
+         }
+
+        #primary-nav {
+         display: none;
+        }
+
+        .hamburger-nav {
+          display: none; /* stays hidden until toggled via JS */
+        }
+
+        .hamburger-nav.show {
+          display: block;
+        }
+
         }
 
     </style>
@@ -86,11 +213,37 @@
 </head>
 <body>
 
-     <main>
+      <div class="entire-page-container">
+
+     <div id="top-bar">
+
+      <div class="header-right">
+          <button id="toggle-nav-btn">&#9776;<!-- hamburger icon/symbol insted of image -->
+          </button>
+          <nav class="hamburger-nav">
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+      </div>
+     
+       <div class="header-center">
+       <nav id="primary-nav">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+       </nav>
+      </div>
+
+     </div>
 
       <header>
       <h1>Title of Page</h1>
       </header>
+
+      <main>
 
       <div class="container">
 
@@ -141,6 +294,21 @@
       </div>
 
      </div>
+
+      <script>
+
+       window.onload = () => {
+        const toggleNavBtn = document.getElementById('toggle-nav-btn');
+        const hamburgerNav = document.querySelector('.hamburger-nav');
+
+      toggleNavBtn.addEventListener('click', () => {
+        hamburgerNav.classList.toggle('show'); // toggle visibility
+        toggleNavBtn.innerHTML = hamburgerNav.classList.contains('show') ? '&#10005;' : '&#9776;'; // X / hamburger
+        });
+
+      };
+      
+    </script></Code>
 
      </main>
 
