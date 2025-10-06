@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise 5</title>
 
+ <link href="hamburgers.css" rel="stylesheet">   
+
     <style>
 
       header {
@@ -111,7 +113,8 @@
             display: flex;
             flex-direction: row;
         } 
-        
+
+        @import "path/to/hamburgers";
         @media screen and (max-width: 767px) {
             
           .flex {
@@ -156,6 +159,7 @@
 
           #toggle-nav-btn {
             display: block;
+            margin-left:auto;
           }
 
           #primary-nav {
@@ -207,9 +211,17 @@
       <div class="entire-page-container">
 
      <div id="top-bar">
-     
        <div class="header-center">
-         <button id="toggle-nav-btn">&#9776;</button>
+       </div>
+       
+       <div class="hamburger">
+         <button id="toggle-nav-btn" class="hamburger--elastic is-active" type="button">
+          <span class="hamburger-box">
+          <span class="hamburger-inner">
+          </span>
+        </span>
+      </button>
+      
        <nav id="primary-nav">
         <ul>
           <li><a href="about.html">About</a></li>
@@ -217,8 +229,7 @@
         </ul>
        </nav>
       </div>
-
-     </div>
+      </div>
 
       <header>
       <h1>Title of Page</h1>
@@ -281,13 +292,13 @@
      <script>
       window.onload = () => {
         const toggleNavBtn = document.getElementById('toggle-nav-btn');
-        const primaryNav = document.getElementById('primary-nav');
+  const primaryNav = document.getElementById('primary-nav');
 
-        toggleNavBtn.addEventListener('click', () => {
-         primaryNav.classList.toggle('show');
-         toggleNavBtn.innerHTML = primaryNav.classList.contains('show') ? '&#10005;' : '&#9776;';
-        });
-      };
+  toggleNavBtn.addEventListener('click', () => {
+    primaryNav.classList.toggle('show');
+    toggleNavBtn.classList.toggle('is-active');
+  });
+};
     </script>
 
 </body>
