@@ -21,32 +21,24 @@
         align-items: center;
         justify-content: flex-end;
         padding-right: 20px;
-        z-index: 1000; /*this makes it above other stuff*/
         }
 
       .header-center {
-        flex:1;
         position:absolute;
         left:50%; /*this moves left edge to middle of parent...50% from the left*/
         transform: translateX(-50%); /*this shifts it back to the left by 50% of its width (always half of parent) when shrinking*/
         padding:10px;
       }
 
-    #primary-nav li {
-      display: block;
-     }
-
-      .inner {
-      overflow: hidden;
-    }
-
     #toggle-nav-btn {
      font-size: 50px;   
      line-height: 1;
-     background: none;
      border: none;
+     background: none;
      cursor: pointer;
      display: none;  
+     padding: 0;
+     margin:0;
    }
   
     .hamburger-nav ul {
@@ -66,7 +58,6 @@
       border-radius: 0 0 10px 10px;
       box-sizing: border-box;
       padding: 10px 0;
-      z-index: 999;    
     }
 
     .hamburger-nav.show {
@@ -126,7 +117,7 @@
         }  
 
       body {
-            margin: 0 auto;
+            margin: 0;
         }
 
       .container {
@@ -199,11 +190,8 @@
         }
 
         .hamburger-nav {
-          display: none; /* stays hidden until toggled via JS */
-        }
-
-        .hamburger-nav.show {
-          display: block;
+          display: none; /* stays hidden until toggled*/
+          background: white;
         }
 
         }
