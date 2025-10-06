@@ -14,15 +14,6 @@
         font-size: 20px;
       }
 
-      .header-right {
-        display: flex;
-        position:relative;
-        margin-left:auto;
-        align-items: center;
-        justify-content: flex-end;
-        padding-right: 20px;
-        }
-
       .header-center {
         position:absolute;
         left:50%; /*this moves left edge to middle of parent...50% from the left*/
@@ -40,44 +31,6 @@
      padding: 0;
      margin:0;
    }
-  
-    .hamburger-nav ul {
-     display: flex;
-     flex-direction: column; /* stack vertically */
-     padding: 0;
-     margin: 0;
-     gap: 0;
-    }
-
-    .hamburger-nav {
-      display: none;
-      position: absolute;
-      top: 100%;  
-      right: 0;
-      width: 200px; 
-      border-radius: 0 0 10px 10px;
-      box-sizing: border-box;
-      padding: 10px 0;
-    }
-
-    .hamburger-nav.show {
-      display: block;
-    }
-
-    .hamburger-nav li {
-      padding: 10px 20px;
-      text-align: center;
-    }
-
-    .hamburger-nav a {
-      text-decoration: none;
-      font-size: 20px;
-    }
-
-    .hamburger-nav a:hover, 
-    .hamburger-nav a:active {
-      border-radius: 5px;
-    }
 
       #top-bar { 
         display: flex;
@@ -127,6 +80,12 @@
         padding: 10px;
       }
 
+      .all-text {
+        display: flex;
+        flex-direction: column;
+        flex:1;
+      }
+
         .flex {
             display: flex;
             flex-direction: column;
@@ -174,6 +133,7 @@
 
           .image {
             order: 1;
+            display:flex;
             font-size: 12px;
           }
 
@@ -181,18 +141,55 @@
             order: 2;
           }
 
+          .header-center {
+            position: static;
+            transform: none;
+            padding: 0;
+            margin-left: auto;
+          }
+
           #toggle-nav-btn {
-         display: block;
-         }
+            display: block;
+          }
 
-        #primary-nav {
-         display: none;
-        }
+          #primary-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 200px;
+            background: white;
+            border-radius: 0 0 10px 10px;
+            box-sizing: border-box;
+            padding: 10px 0;
+          }
 
-        .hamburger-nav {
-          display: none; /* stays hidden until toggled*/
-          background: white;
-        }
+          #primary-nav.show {
+            display: block;
+          }
+
+          #primary-nav ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+            gap: 0;
+          }
+
+          #primary-nav li {
+            padding: 10px 20px;
+            text-align: center;
+          }
+
+          #primary-nav a {
+            text-decoration: none;
+            font-size: 20px;
+          }
+
+          #primary-nav a:hover, 
+          #primary-nav a:active {
+            border-radius: 5px;
+          }
 
         }
 
@@ -204,19 +201,9 @@
       <div class="entire-page-container">
 
      <div id="top-bar">
-
-      <div class="header-right">
-          <button id="toggle-nav-btn">&#9776;<!-- hamburger icon/symbol insted of image -->
-          </button>
-          <nav class="hamburger-nav">
-            <ul>
-              <li><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </nav>
-      </div>
      
        <div class="header-center">
+         <button id="toggle-nav-btn">&#9776;</button>
        <nav id="primary-nav">
         <ul>
           <li><a href="about.html">About</a></li>
@@ -277,28 +264,25 @@
       </div>
 
       <div class="image">
-        <img src="images/Flower_Center_1.webp" alt="Flower Image" width="846" height="546">
+        <img src="images/Flower_Center_1.webp" alt="Flower Image" width=100%>
         <figcaption>Univ. of MI Arb Peony</figcaption>
       </div>
 
      </div>
 
-      <script>
-
-       window.onload = () => {
-        const toggleNavBtn = document.getElementById('toggle-nav-btn');
-        const hamburgerNav = document.querySelector('.hamburger-nav');
-
-      toggleNavBtn.addEventListener('click', () => {
-        hamburgerNav.classList.toggle('show'); // toggle visibility
-        toggleNavBtn.innerHTML = hamburgerNav.classList.contains('show') ? '&#10005;' : '&#9776;'; // X / hamburger
-        });
-
-      };
-      
-    </script></Code>
-
      </main>
+
+     <script>
+      window.onload = () => {
+        const toggleNavBtn = document.getElementById('toggle-nav-btn');
+        const primaryNav = document.getElementById('primary-nav');
+
+        toggleNavBtn.addEventListener('click', () => {
+         primaryNav.classList.toggle('show');
+         toggleNavBtn.innerHTML = primaryNav.classList.contains('show') ? '&#10005;' : '&#9776;';
+        });
+      };
+    </script>
 
 </body>
 </html>
