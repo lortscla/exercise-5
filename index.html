@@ -114,7 +114,6 @@
             flex-direction: row;
         } 
 
-        @import "path/to/hamburgers";
         @media screen and (max-width: 767px) {
             
           .flex {
@@ -214,8 +213,8 @@
        <div class="header-center">
        </div>
        
-       <div class="hamburger">
-         <button id="toggle-nav-btn" class="hamburger--elastic is-active" type="button">
+       
+         <button id="toggle-nav-btn" class="hamburger hamburger--elastic" type="button">
           <span class="hamburger-box">
           <span class="hamburger-inner">
           </span>
@@ -228,7 +227,7 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
        </nav>
-      </div>
+      
       </div>
 
       <header>
@@ -290,6 +289,7 @@
      </main>
 
      <script>
+
       window.onload = () => {
         const toggleNavBtn = document.getElementById('toggle-nav-btn');
   const primaryNav = document.getElementById('primary-nav');
@@ -299,6 +299,7 @@
     toggleNavBtn.classList.toggle('is-active');
   });
 };
+
     </script>
 
 </body>
